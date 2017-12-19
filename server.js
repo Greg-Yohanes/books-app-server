@@ -28,3 +28,9 @@ app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 //then run: heroku create gn-yd-booklist
 //Time stamp 5:30 book.js file api code in video
 
+//ACP Heroku style: git push heroku branch_name
+
+//Automatically sync git ACP's: Hit deploy tab, connect github, select organization from drop down menu, search repo name and connect!
+
+
+
