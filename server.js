@@ -19,3 +19,12 @@ app.get('/', (req, res) => res.send('Testing 1, 2, 3'));
 app.get('*', (req, res) => res.redirect(CLIENT_URL));
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 
+//run EACH code one at a time into ternminal within directory that has server.js
+//export PORT=3000
+//export CLIENT_URL=http://localhost:8080
+//Mac:     export DATABASE_URL=postgres://localhost:5432/books_app
+//Windows: export DATABASE_URL=postgres://USER:PASSWORD@localhost:5432/books_app
+
+//then run: heroku create gn-yd-booklist
+//Time stamp 5:30 book.js file api code in video
+
