@@ -24,10 +24,10 @@ app.use(cors());
 //app.get('/avi/vi1/books'...) #Time Stamp 2:30pm-2:43pm pt.1
 app.get('/', (req, res) => res.send('Testing 1, 2, 3'));
 app.get('/api/v1/books', (req, res) => {
-    client.query('SELECT * FROM books;')
+  client.query('SELECT book_id, title, author, image_url FROM books;')
     .then(results => res.send(results.rows))
-    .catch(console.error)
-})
+    .catch(console.error);
+});
 
 //
 // app.all('*', (req, res) => res.redirect(CLIENT_URL));
