@@ -6,7 +6,7 @@ const cors = require('cors');
 const pg = require('pg');
 
 //APP Setup
-const app = express();
+const app = express();  
 const PORT = process.env.PORT;
 //this next line of coded added from scots lecture example
 const DATABASE_URL = process.env.DATABASE_URL;
