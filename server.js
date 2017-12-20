@@ -30,7 +30,7 @@ app.get('/api/v1/books', (req, res) => {
 })
 
 //
-app.all('*', (req, res) => res.redirect(CLIENT_URL));
+// app.all('*', (req, res) => res.redirect(CLIENT_URL));
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 
 //run EACH code one at a time into ternminal within directory that has server.js
