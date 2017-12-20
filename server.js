@@ -22,7 +22,7 @@ app.use(cors());
 //line above is a "middleware" that approves access. "cors" makes it completely open api. "white listed" is the term used, oppositie from "blacklisted".
 
 //app.get('/avi/vi1/books'...) #Time Stamp 2:30pm-2:43pm pt.1
-// app.get('/', (req, res) => res.send('Testing 1, 2, 3'));
+app.get('/', (req, res) => res.send('Testing 1, 2, 3'));
 app.get('/api/v1/books', (req, res) => {
     client.query('SELECT * FROM books;')
     .then(results => res.send(results.rows))
@@ -30,7 +30,7 @@ app.get('/api/v1/books', (req, res) => {
 })
 
 //
-app.get('*', (req, res) => res.redirect(CLIENT_URL));
+app.all('*', (req, res) => res.redirect(CLIENT_URL));
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 
 //run EACH code one at a time into ternminal within directory that has server.js
