@@ -19,18 +19,29 @@ client.connect();
 client.on('error', err => console.error(err));
 
 app.use(cors());
-//line above is a "middleware" that approves access. "cors" makes it completely open api. "white listed" is the term used, oppositie from "blacklisted".
+//line above is a "middleware" that approves access. "cors" makes it completely open api. "white listed" is the term used, oppositie from "blacklisted"
 
 //app.get('/avi/vi1/books'...) #Time Stamp 2:30pm-2:43pm pt.1
-app.get('/', (req, res) => res.send('Testing 1, 2, 3'));
-app.get('/api/v1/books', (req, res) => {
-    client.query('SELECT * FROM books;')
-    .then(results => res.send(results.rows))
-    .catch(console.error)
-})
+// app.get('/', (req, res) => res.send('Testing 1, 2, 3'));
 
-//
-// app.all('*', (req, res) => res.redirect(CLIENT_URL));
+app.get('/api/v1/books', (req, res) => {
+  client.query(`SELECT book_id, title, author, image_url, isbn FROM books;`)
+    .then(results => res.send(results.rows))
+    .catch(console.error);
+});
+
+app.get('/api/v1/books/:id', (req, res) => {
+  client.query(`SELECT * FROM books WHERE book_id=$1;`, [req.params.id])
+    .then(result => res.send(result.rows))
+    .catch(console.error);
+});
+
+// app.get('/api/v1/books/:id', (req, res) => {
+//   client.query(`SELECT * FROM books WHERE id = $1`, [req.params.id]);
+  
+// });
+
+app.get('*', (req, res) => res.redirect(CLIENT_URL));
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 
 //run EACH code one at a time into ternminal within directory that has server.js
