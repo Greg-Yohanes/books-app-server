@@ -33,8 +33,12 @@ app.get('/api/v1/books/:id'), (req, res) => {
   client.query('SELECT * FROM books WHERE id=$1', [req.params.id]).then(console.log).then(() => res.sendStatus(200)).catch(console.error);
 };
 
-//
-// app.all('*', (req, res) => res.redirect(CLIENT_URL));
+// app.get('/api/v1/books/:id', (req, res) => {
+//   client.query(`SELECT * FROM books WHERE id = $1`, [req.params.id]);
+  
+// });
+
+app.get('*', (req, res) => res.redirect(CLIENT_URL));
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 
 //run EACH code one at a time into ternminal within directory that has server.js
