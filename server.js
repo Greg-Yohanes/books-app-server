@@ -19,7 +19,7 @@ client.connect();
 client.on('error', err => console.error(err));
 
 app.use(cors());
-//line above is a "middleware" that approves access. "cors" makes it completely open api. "white listed" is the term used, oppositie from "blacklisted".
+//line above is a "middleware" that approves access. "cors" makes it completely open api. "white listed" is the term used, oppositie from "blacklisted"
 
 //app.get('/avi/vi1/books'...) #Time Stamp 2:30pm-2:43pm pt.1
 app.get('/', (req, res) => res.send('Testing 1, 2, 3'));
@@ -28,6 +28,10 @@ app.get('/api/v1/books', (req, res) => {
     .then(results => res.send(results.rows))
     .catch(console.error);
 });
+
+app.get('/api/v1/books/:id'), (req, res) => {
+  client.query('SELECT * FROM books WHERE id=$1', [req.params.id]).then(console.log).then(() => res.sendStatus(200)).catch(console.error);
+};
 
 //
 // app.all('*', (req, res) => res.redirect(CLIENT_URL));
