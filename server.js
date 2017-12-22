@@ -4,6 +4,7 @@
 const express = require('express');
 const cors = require('cors');
 const pg = require('pg');
+const bodyParser = require('body-parser')
 
 //APP Setup
 const app = express();  
@@ -31,8 +32,13 @@ app.get('/api/v1/books', (req, res) => {
 });
 
 app.get('/api/v1/books/:id', (req, res) => {
+  console.log(req.params.id);
   client.query(`SELECT * FROM books WHERE book_id=$1;`, [req.params.id])
-    .then(result => res.send(result.rows))
+    .then(result => {
+      console.log(result.rows);
+      return res.send(result.rows);
+     
+    })
     .catch(console.error);
 });
 
