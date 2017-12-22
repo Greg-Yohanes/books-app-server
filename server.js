@@ -4,6 +4,7 @@
 const express = require('express');
 const cors = require('cors');
 const pg = require('pg');
+const bodyParser = require('body-parser')
 
 //APP Setup
 const app = express();
