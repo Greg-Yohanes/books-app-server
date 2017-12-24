@@ -1,10 +1,10 @@
-'use strict'
+'use strict';
 
 //these first three lines of code are to impliment our "dependencies" from package.json "express, cors", and "pg".
 const express = require('express');
 const cors = require('cors');
 const pg = require('pg');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
 
 //APP Setup
 const app = express();  
@@ -42,6 +42,9 @@ app.get('/api/v1/books/:id', (req, res) => {
     .catch(console.error);
 });
 
+app.post('/api/v1/books/', (req, res) => {
+  client.query(`INSERT INTO books (title, author, image_url, isbn) VALUES ($!, $2, $3, $4);`, [req.params.title, req.params.author, req.params.image_url, req.params.isbn]);
+
 // app.get('/api/v1/books/:id', (req, res) => {
 //   client.query(`SELECT * FROM books WHERE id = $1`, [req.params.id]);
   
@@ -52,7 +55,7 @@ app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 
 //run EACH code one at a time into ternminal within directory that has server.js
 //export PORT=3000
-//export CLIENT_URL=http://localhost:8080
+//export CLIENT_URL=http://localhost:3000
 //Mac:     export DATABASE_URL=postgres://localhost:5432/books_app
 //Windows: export DATABASE_URL=postgres://USER:PASSWORD@localhost:5432/books_app
 
